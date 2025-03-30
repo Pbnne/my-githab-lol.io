@@ -84,6 +84,8 @@
         #nextButton {
             right: 10px;
         }
+
+        
     </style>
 </head>
 
@@ -110,23 +112,61 @@
 
     <script>
         const images = ["1.jpg", "2.jpg"];
+        const imageTexts = ["1Тут должна быть моя работа пока ее нету ну и так хорошо ", "2Тут должна быть моя работа пока ее нету ну и так хорошо "];
         let currentImageIndex = 0;
         const imageElement = document.querySelector('.carousel img');
-
+        const notificationElement = document.createElement('div');
+        notificationElement.style.position = 'fixed';
+        notificationElement.style.bottom = '10px';
+        notificationElement.style.right = '10px';
+        notificationElement.style.backgroundColor = 'rgba(59, 89, 152, 0.9)'; /* Facebook blue color */
+        notificationElement.style.color = 'white';
+        notificationElement.style.padding = '10px';
+        notificationElement.style.borderRadius = '5px';
+        notificationElement.style.zIndex = '1';
+        notificationElement.style.maxWidth = '300px';
+        notificationElement.style.overflow = 'hidden';
+        notificationElement.style.whiteSpace = 'nowrap';
+        notificationElement.style.textOverflow = 'ellipsis';
+        notificationElement.style.display = 'none'; /* Initially hidden */
+        document.body.appendChild(notificationElement);
+    
         function showImage(index) {
             imageElement.src = images[index];
         }
-
-        document.getElementById('prevButton').addEventListener('click', function() {
+    
+        function showNotification(index) {
+            let message = imageTexts[index];
+            notificationElement.innerHTML = `
+                <div style="position: relative;">
+                    <img src="ava.jpg" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                    <span style="position: absolute; top: 0; right: 0; cursor: pointer;" onclick="closeNotification()">❎</span>
+                    <div style="white-space: normal; word-wrap: break-word;">${message}</div>
+                </div>
+            `;
+            notificationElement.style.display = 'block';
+        }
+    
+        function closeNotification() {
+            notificationElement.style.display = 'none';
+        }
+    
+        function showPreviousImage() {
             currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
             showImage(currentImageIndex);
-        });
-
-        document.getElementById('nextButton').addEventListener('click', function() {
+            showNotification(currentImageIndex);
+        }
+    
+        function showNextImage() {
             currentImageIndex = (currentImageIndex + 1) % images.length;
             showImage(currentImageIndex);
-        });
-
+            showNotification(currentImageIndex);
+        }
+    
+        document.getElementById('prevButton').addEventListener('click', showPreviousImage);
+    
+        document.getElementById('nextButton').addEventListener('click', showNextImage);
+    
         showImage(currentImageIndex);
     </script>
 </body>
