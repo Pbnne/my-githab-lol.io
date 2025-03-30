@@ -4,11 +4,37 @@
 }
 #prevButton,
 #nextButton {
-    background-color: #007bff; /* Blue background color */
-    color: #fff; /* White text color */
-    padding: 10px 20px; /* Padding around the text */
-    border: none; /* Remove button border */
-    border-radius: 5px; /* Rounded corners */
-    margin: 5px; /* Margin around the buttons */
-    cursor: pointer; /* Show pointer cursor on hover */
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    margin: 5px; 
+    cursor: pointer; 
 }
+
+.content-box {
+    background-color: rgba(95, 83, 83, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 auto; 
+    max-width: 80%; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+
+.carousel img {
+    width: 550px; /* Здесь можно указать желаемую ширину изображения */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    border-radius: 5px;
+}
+
+.avatar {
+    display: block;
+    margin: 0 auto; /* Устанавливаем автоматичесные отступы слева и справа для центрирования */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
