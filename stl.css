@@ -1,0 +1,14 @@
+.button:hover {
+    background-color: #0056b3; 
+    color: #ffffff; 
+}
+#prevButton,
+#nextButton {
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Rounded corners */
+    margin: 5px; /* Margin around the buttons */
+    cursor: pointer; /* Show pointer cursor on hover */
+}
