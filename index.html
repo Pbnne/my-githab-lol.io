@@ -1,60 +1,128 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
+    <title>Мой Портфолио</title>
+    <link rel="stylesheet" type="text/css" href="stl.css">
     <style>
         body {
+            margin: 0;
+            padding: 0;
             background-image: url('space.jpg');
             background-size: cover;
-            background-attachment: fixed;
             background-position: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-        }
-
-        h1, h2, a {
             color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+
+        .greeting {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
             border-radius: 10px;
-            margin: 10px;
-            display: block;
-            width: 80%;
-            max-width: 400px;
+            margin-top: 10px;
+            text-align: center;
+            max-width: 200%;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .buttons {
             display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
+            margin-top: 20px;
         }
 
-        li {
-            margin: 10px;
+        .button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .carousel img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        #prevButton, #nextButton {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #prevButton {
+            left: 10px;
+        }
+
+        #nextButton {
+            right: 10px;
         }
     </style>
 </head>
+
 <body>
-    <h1>Добро пожаловать!</h1>
+    <img src="ava.jpg" alt="Аватар" class="avatar">
+    <div class="greeting">
+        <p>Меня зовут Павел, и я хочу стать тестировщиком.</p>
+    </div>
+    <div class="buttons">
+        <a href="https://t.me/pbnne1" class="button">Мой телеграм</a>
+        <a href="https://github.com/Pbnne" class="button">Мой гитхаб</a>
+    </div>
+    <div class="carousel">
+        <img src="1.jpg" alt="Скриншот 1">
+        <button id="prevButton">Назад</button>
+        <button id="nextButton">Вперед</button>
+    </div>
 
-    <h2>Социальные сети:</h2>
-    <ul>
-        <li><a href="ССЫЛКА ТВОЯ">Моя страница VK</a></li>
-        <li><a href="ССЫЛКА ТВОЯ">Telegram канал</a></li>
-    </ul>
+    <script>
+        const images = ["1.jpg", "2.jpg"];
+        let currentImageIndex = 0;
+        const imageElement = document.querySelector('.carousel img');
 
-    <h2>Портфолио:</h2>
-    <a href="ссылка_на_ваше_портфолио">Посмотреть мои работы</a>
+        function showImage(index) {
+            imageElement.src = images[index];
+        }
+
+        document.getElementById('prevButton').addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
+        });
+
+        document.getElementById('nextButton').addEventListener('click', function() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        });
+
+        showImage(currentImageIndex);
+    </script>
 </body>
+
 </html>
